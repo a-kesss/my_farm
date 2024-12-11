@@ -20,7 +20,7 @@ function App() {
             element={<h1>В РАЗРАБОТКЕ, ТУТ БУДЕТ ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ</h1>}
           />
           <Route path="/farm/:id" element={<FarmPage />} />
-          <Route path="*" element={<h1>404</h1>} />
+          <Route path="*" element={<h1>ТАКОЙ СТРАНИЦЫ НЕ СУЩЕСТВУЕТ</h1>} />
         </Route>
       </Routes>
     </>

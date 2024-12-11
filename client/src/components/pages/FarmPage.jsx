@@ -14,11 +14,11 @@ export default function FarmPage() {
     const userId = id;
     try {
       const response = await axiosInstance.get('/allusers', { params: { userId } });
-      console.log(response.data);
-
+      console.log(`Этот лог ${response.status}`);
       setAnimal(response.data);
     } catch (error) {
-      console.error('Ошибка загрузки пользователей:', error);
+      console.error('Ошибка сервера:', error);
+      window.location.href = '/';
     }
   };
 

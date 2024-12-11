@@ -3,7 +3,6 @@ const { Animal } = require('../../db/models');
 
 adduserRouter.post('/adduser', async (req, res) => {
   const { className, img, userId } = req.body;
-  console.log(req.body);
 
   try {
     const user = await Animal.create({
@@ -12,7 +11,7 @@ adduserRouter.post('/adduser', async (req, res) => {
       userId,
     });
 
-    res.status(201).json({ success: true });
+    res.status(201).json({ success: true, message: 'Животное успешно добавлено!' });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Ошибка сервера' });

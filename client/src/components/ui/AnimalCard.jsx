@@ -26,7 +26,7 @@ function UserCard({ user }) {
   };
 
   return (
-    <Card style={{ marginTop: '30px', width: '18rem' }}>
+    <Card style={{ marginTop: '30px', width: '300px', height: '400px' }}>
       {isEditing ? (
         <form onSubmit={handleSubmit}>
           <Card.Body>

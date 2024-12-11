@@ -19,7 +19,7 @@ export default function NavBar() {
                   Ферма
                 </Nav.Link>
                 <Nav.Link as={RouterNavLink} to="/profile">
-                  {user.name || 'Пользователь'}
+                  Hi, {user.name || 'Пользователь'}
                 </Nav.Link>
                 <Nav.Link onClick={logout}>Выход</Nav.Link>
               </>

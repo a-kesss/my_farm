@@ -11,8 +11,6 @@ export default function MainPage() {
   const AllFarms = async () => {
     try {
       const response = await axiosInstance.get('/allfarm');
-      console.log(response.data);
-
       setFarms(response.data);
     } catch (error) {
       console.error('Ошибка загрузки пользователей:', error);

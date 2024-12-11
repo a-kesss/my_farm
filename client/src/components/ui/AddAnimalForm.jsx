@@ -40,19 +40,12 @@ function AddUserForm() {
     }
     try {
       const response = await axiosInstance.post('/adduser', inputs);
-
-      if (response.data.success === true) {
-        setAcces('Пользователь успешно добавлен');
+      if (response.data.message) {
+        setAcces(response.data.message);
       }
     } catch (error) {
-      if (error.response && error.response.status === 409) {
-        setError('Пользователь уже существует');
-      } else {
-        setError('Ошибка сервера');
-      }
+      console.log(error);
     } finally {
-      setError('');
-      setAcces('');
       clearInputs();
       setLoading(false);
     }
@@ -64,7 +57,7 @@ function AddUserForm() {
         {error && <div className="alert alert-danger">{error}</div>}
         {acces && <div className="alert alert-success">{acces}</div>}
         <h1>Добавление животных:</h1>
-        <InputGroup style={{ margin: '10px' }}>
+        <InputGroup className="w-25" style={{ margin: '10px' }}>
           <Form.Control
             placeholder="Дайте название животному"
             type="text"
@@ -74,7 +67,7 @@ function AddUserForm() {
           />
         </InputGroup>
 
-        <InputGroup style={{ margin: '10px' }}>
+        <InputGroup className="w-25" style={{ margin: '10px' }}>
           <Form.Control
             placeholder="Вставьте URL Картинки"
             type="text"

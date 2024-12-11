@@ -9,6 +9,9 @@ loginRouter.post('/login', async (req, res) => {
 
   try {
     const plainet = await User.findOne({ where: { name } });
+    if (!plainet) {
+      return res.json({ success: false, message: 'Пользователь не найден' });
+    }
 
     const user = plainet.get({ plain: true });
 

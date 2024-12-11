@@ -28,18 +28,18 @@ function LoginPage() {
 
     try {
       const response = await axiosInstance.post('/login', data);
-      console.log(response.data);
 
       const { success, user } = response.data;
-
+      
       if (success) {
         login(user);
-      } else {
-        setError('Неправильный пароль или логин');
+      }
+      if (response.data.message) {
+        setError(response.data.message);
       }
     } catch (error) {
       console.error(error);
-      setError('Ошибка сервера. Попробуйте позже!');
+      setError('Ошибка сервера');
     } finally {
       setLoading(false);
     }
@@ -64,7 +64,11 @@ function LoginPage() {
           name="name"
           onChange={changeHandler}
           value={data.name}
+          isInvalid={data.name.length < 0}
         />
+        <Form.Control.Feedback type="invalid">
+          Пожалуйста, заполните это поле.
+        </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -75,7 +79,11 @@ function LoginPage() {
           name="password"
           onChange={changeHandler}
           value={data.password}
+          isInvalid={data.password.length > 0 && data.password.length < 3}
         />
+        <Form.Control.Feedback type="invalid">
+          Длина пароля должна быть не менее 3 символов
+        </Form.Control.Feedback>
       </Form.Group>
       <Button variant="primary" type="submit" disabled={loading}>
         {loading ? 'Загрузка...' : 'Войти'}

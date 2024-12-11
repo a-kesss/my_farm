@@ -2,7 +2,8 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useState } from 'react';
 import Cookies from 'js-cookie';
-
+// не понял почему не работает useNavigate
+// использовать контекст конечно рановато, но я на него наткнулся и решил изучить, очень полезная штука и удобная :)
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {

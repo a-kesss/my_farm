@@ -1,7 +1,6 @@
 import Card from 'react-bootstrap/Card';
 
 export default function AnimalFarmCard({ animal }) {
-  console.log(animal);
   return (
     <Card style={{ marginTop: '30px', width: '18rem' }}>
       <Card.Body>
